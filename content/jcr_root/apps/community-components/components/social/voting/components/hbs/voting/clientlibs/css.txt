@@ -1,0 +1,1 @@
+votingcomponent.css
