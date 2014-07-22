@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1406065618751
+Build-Jdk: 1.6.0_65
+Built-By: arunpon
+Bundle-ClassPath: .,jackson-annotations-2.2.2.jar
+Bundle-Description: Custom Communities API
+Bundle-ManifestVersion: 2
+Bundle-Name: Custom Communities API
+Bundle-SymbolicName: com.adobe.cq.social.custom.voting.custom-voting
+Bundle-Version: 0.0.1.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Embed-Dependency: jackson-annotations
+Embedded-Artifacts: jackson-annotations-2.2.2.jar;g="com.fasterxml.jacks
+ on.core";a="jackson-annotations";v="2.2.2"
+Tool: Bnd-1.50.0
