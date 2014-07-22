@@ -15,7 +15,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Adobe Systems Incorporated.
  **************************************************************************/
-package com.adobe.cq.social.tally.client.api;
+package com.adobe.cq.social.custom.voting;
 
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
@@ -29,30 +29,29 @@ import com.adobe.cq.social.commons.client.api.QueryRequestInfo;
 import com.adobe.cq.social.commons.client.api.SocialComponent;
 import com.adobe.cq.social.commons.client.api.SocialComponentFactory;
 import com.adobe.cq.social.tally.Voting;
-import com.adobe.cq.social.tally.client.impl.VotingSocialComponentImpl;
 import com.adobe.granite.xss.XSSAPI;
 
 /**
- * Default SocialComponentFactory for Ratings.
+ * Default SocialComponentFactory for Heart Voting.
  */
 @Component
 @Service
-public class VotingSocialComponentFactory extends AbstractSocialComponentFactory implements SocialComponentFactory {
+public class HeartVotingSocialComponentFactory extends AbstractSocialComponentFactory implements SocialComponentFactory {
 
-    private static final String VOTING_RESOURCE_TYPE = "social/tally/components/voting";
+    private static final String VOTING_RESOURCE_TYPE = "community-components/components/social/voting/components/hbs/voting";
 
     @Reference
     private XSSAPI xss;
 
     @Override
     public SocialComponent getSocialComponent(final Resource resource) {
-        return new VotingSocialComponentImpl(resource.adaptTo(Voting.class), this.getClientUtilities(resource
+        return new HeartVotingSocialComponent(resource.adaptTo(Voting.class), this.getClientUtilities(resource
             .getResourceResolver()));
     }
 
     @Override
     public SocialComponent getSocialComponent(final Resource resource, final SlingHttpServletRequest request) {
-        return new VotingSocialComponentImpl(resource.adaptTo(Voting.class), this.getClientUtilities(request));
+        return new HeartVotingSocialComponent(resource.adaptTo(Voting.class), this.getClientUtilities(request));
     }
 
     @Override
@@ -63,6 +62,6 @@ public class VotingSocialComponentFactory extends AbstractSocialComponentFactory
     @Override
     public SocialComponent getSocialComponent(final Resource resource, final ClientUtilities clientUtils,
         final QueryRequestInfo queryInfo) {
-        return new VotingSocialComponentImpl(resource, clientUtils);
+        return new HeartVotingSocialComponent(resource, clientUtils);
     }
 }
