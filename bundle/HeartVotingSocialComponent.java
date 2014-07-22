@@ -1,38 +1,44 @@
-/*************************************************************************
- *
- * ADOBE CONFIDENTIAL
- * __________________
- *
- *  Copyright 2013 Adobe Systems Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Adobe Systems Incorporated and its
- * suppliers and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Adobe Systems Incorporated.
- **************************************************************************/
-package com.adobe.cq.social.tally.client.impl;
+package com.adobe.cq.social.custom.voting;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.sling.api.resource.Resource;
 
 import com.adobe.cq.social.commons.client.api.ClientUtilities;
+import com.adobe.cq.social.commons.client.api.User;
+import com.adobe.cq.social.tally.Response;
+import com.adobe.cq.social.tally.ResponseValue;
+import com.adobe.cq.social.tally.Tally;
+import com.adobe.cq.social.tally.Vote;
 import com.adobe.cq.social.tally.Voting;
 import com.adobe.cq.social.tally.client.api.AbstractVoting;
 
-public class VotingSocialComponentImpl extends AbstractVoting {
-    public VotingSocialComponentImpl(final Resource resource) {
+
+public class HeartVotingSocialComponent extends AbstractVoting{
+    public HeartVotingSocialComponent(final Resource resource) {
         super(resource);
     }
 
-    public VotingSocialComponentImpl(final Resource resource, final ClientUtilities clientUtils) {
+    public HeartVotingSocialComponent(final Resource resource, final ClientUtilities clientUtils) {
         super(resource, clientUtils);
     }
 
-    public VotingSocialComponentImpl(final Voting votingComponent, final ClientUtilities clientUtils) {
+    public HeartVotingSocialComponent(final Voting votingComponent, final ClientUtilities clientUtils) {
         super(votingComponent, clientUtils);
+    }
+    
+    public List<User> getLikedBy() {
+        List<User> users = new ArrayList<User>();
+        Tally<?> tallies = this.getTally();
+        Iterator<?> responses = tallies.getResponses(0L);
+        while (responses.hasNext()) {
+            Response<ResponseValue> r = (Response<ResponseValue>) responses.next();
+            if (Vote.LIKE.equals(r.getResponseValue())) {
+                users.add(clientUtils.getUser(r.getUserId(), this.getResource().getResourceResolver()));
+            }
+        }
+        return users;
     }
 }
