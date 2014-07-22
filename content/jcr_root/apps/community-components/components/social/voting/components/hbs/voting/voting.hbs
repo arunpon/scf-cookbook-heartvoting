@@ -1,0 +1,47 @@
+{{!
+
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2014 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+
+}}
+<div data-component-id="{{id}}" data-scf-component="social/tally/components/hbs/voting" class="scf scf-voting">
+            {{#if loggedInUser.loggedIn}}
+            {{#if canUserRespond}}
+                    {{#if currentUserResponse}}
+                      {{#if currentUserLike}}
+              <span class="scf-voting-unset scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+              <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
+                        <span class="scf-voting-set scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}" evt="click=vote"></span> 
+                      {{else}}
+                         <span class="scf-voting-set scf-vote-up" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+                 <span class="scf-votingLabel" data-vote-count='{{netCount}}'>{{netCount}}</span>
+                         <span class="scf-voting-unset scf-vote-down" type="button" data-voting-value="unset" alt="{{i18n "Vote down"}}" evt="click=vote"></span>
+                      {{/if}}
+                     {{else}}
+                       <span class="scf-voting-set scf-vote-up" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+             <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
+                       <span class="scf-voting-set scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}" evt="click=vote"></span>
+                     {{/if}}
+            {{else}}
+              <span class="scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}"></span> 
+            <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
+                  <span class="scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}"></span>   
+            {{/if}}
+            {{else}}
+        <span class="scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Sign in to vote"}}"></span> 
+        <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
+                <span class="scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Sign in to vote"}}"></span> 
+            {{/if}}
+</div>
