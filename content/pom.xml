@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2012 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================================== -->
+    <!-- P A R E N T                                                            -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.adobe.cq.social.custom.voting</groupId>
+        <artifactId>custom-voting-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!-- ====================================================================== -->
+    <!-- P R O J E C T  D E S C R I P T I O N                                   -->
+    <!-- ====================================================================== -->
+
+    <name>SCF Custom Voting - Package</name>
+    <groupId>com.adobe.cq.social.custom.voting</groupId>
+    <artifactId>custom-voting-pkg</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>content-package</packaging>
+
+    <!-- ====================================================================== -->
+    <!-- B U I L D   D E F I N I T I O N                                        -->
+    <!-- ====================================================================== -->
+    <build>
+        <resources>
+            <!-- ========================================================== -->
+            <!-- JCR CONTENT -->
+            <!-- ========================================================== -->
+            <resource>
+                <directory>${basedir}/jcr_root/</directory>
+                <excludes>
+                    <exclude>**/.vlt</exclude>
+                    <exclude>**/.vltignore</exclude>
+                    <exclude>**/.p4ignore</exclude>
+                    <exclude>**/.DS_Store</exclude>
+                    <exclude>**/*.mine</exclude>
+                    <exclude>**/*.dir</exclude>
+                    <exclude>**/*.theirs</exclude>
+                    <exclude>**/*.base</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <group>day/cq561/social/component-guide</group>
+                    <requiresRoot>true</requiresRoot>
+                    <properties>
+                        <acHandling>overwrite</acHandling>
+                        <!-- we don't want the build-user -->
+                        <createdBy>Adobe</createdBy>
+                    </properties>
+                    <prefix>/</prefix>
+                    <filterSource>${basedir}/META-INF/vault/filter.xml</filterSource>
+                    <!-- maven archiver configuration -->
+                    <archive>
+                        <manifestEntries>
+                            <BuildVersion>${project.version}.${BUILD_NUMBER}</BuildVersion>
+                        </manifestEntries>
+                    </archive>
+                    <dependencies>
+                        <dependency>
+                            <group>day/cq560/social/commons</group>
+                            <name>cq-social-commons-pkg</name>
+                            <version>[1.4.0,)</version>
+                        </dependency>
+                    </dependencies>
+                    <!-- embedded dependencies in the content package -->
+                    <embeddeds>
+                    </embeddeds>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
