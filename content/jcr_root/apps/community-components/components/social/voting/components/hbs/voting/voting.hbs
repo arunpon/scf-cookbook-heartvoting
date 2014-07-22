@@ -16,32 +16,33 @@
  from Adobe Systems Incorporated.
 
 }}
-<div data-component-id="{{id}}" data-scf-component="social/tally/components/hbs/voting" class="scf scf-voting">
+<div data-component-id="{{id}}" data-scf-component="geometrixx-media/components/social/voting/components/hbs/voting" class="scf scf-voting">
             {{#if loggedInUser.loggedIn}}
-            {{#if canUserRespond}}
+      			{{#if canUserRespond}}
                     {{#if currentUserResponse}}
-                      {{#if currentUserLike}}
-              <span class="scf-voting-unset scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
-              <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
-                        <span class="scf-voting-set scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}" evt="click=vote"></span> 
-                      {{else}}
-                         <span class="scf-voting-set scf-vote-up" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
-                 <span class="scf-votingLabel" data-vote-count='{{netCount}}'>{{netCount}}</span>
-                         <span class="scf-voting-unset scf-vote-down" type="button" data-voting-value="unset" alt="{{i18n "Vote down"}}" evt="click=vote"></span>
-                      {{/if}}
+                    	{{#if currentUserLike}}
+							<span class="scf-voting-unset scf-vote-heart" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+                    	{{else}}
+                    		 <span class="scf-voting-set scf-vote-heart" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+                    	{{/if}}
                      {{else}}
-                       <span class="scf-voting-set scf-vote-up" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
-             <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
-                       <span class="scf-voting-set scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}" evt="click=vote"></span>
+                     	 <span class="scf-voting-set scf-vote-heart" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
                      {{/if}}
-            {{else}}
-              <span class="scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}"></span> 
-            <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
-                  <span class="scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Vote down"}}"></span>   
+      			{{else}}
+      				<span class="scf-vote-heart" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}"></span> 
+      			{{/if}}
+            {{#if likedBy}}
+            <span> Likers</span>
+              <ul class="scf-horizontal-list">
+                {{#each likedBy}}
+                  <li>
+                    <a href='{{this.profileUrl}}'>
+                    <img class='scf-vote-avatar-height' src='{{this.avatarUrl}}'></a>
+                  </li>
+                {{/each}}
+              </ul>
             {{/if}}
             {{else}}
-        <span class="scf-vote-up" type="button" data-voting-value="unset" alt="{{i18n "Sign in to vote"}}"></span> 
-        <span class="scf-votingLabel" data-vote-count="{{netCount}}">{{netCount}}</span>
-                <span class="scf-vote-down" type="button" data-voting-value="-1" alt="{{i18n "Sign in to vote"}}"></span> 
+				<span class="scf-vote-heart" type="button" data-voting-value="unset" alt="{{i18n "Sign in to vote"}}"></span> 
             {{/if}}
 </div>
