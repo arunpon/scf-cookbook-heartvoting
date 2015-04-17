@@ -16,12 +16,12 @@
  from Adobe Systems Incorporated.
 
 }}
-<div data-component-id="{{id}}" data-scf-component="geometrixx-media/components/social/voting/components/hbs/voting" class="scf scf-voting">
+<div data-component-id="{{id}}" data-scf-component="community-components/components/social/voting/components/hbs/voting" class="scf scf-voting">
             {{#if loggedInUser.loggedIn}}
       			{{#if canUserRespond}}
                     {{#if currentUserResponse}}
                     	{{#if currentUserLike}}
-							<span class="scf-voting-unset scf-vote-heart" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
+    						<span class="scf-voting-unset scf-vote-heart" type="button" data-voting-value="unset" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
                     	{{else}}
                     		 <span class="scf-voting-set scf-vote-heart" type="button" data-voting-value="1" alt="{{i18n "Vote up"}}" evt="click=vote"></span> 
                     	{{/if}}

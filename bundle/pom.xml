@@ -98,32 +98,26 @@
         </dependency>
         <dependency>
             <groupId>com.adobe.cq.social</groupId>
-            <artifactId>cq-social-ugcbase</artifactId>
-            <version>1.1.38</version>
+            <artifactId>cq-social-ugcbase-api</artifactId>
+            <version>2.0.14</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.cq.social</groupId>
-            <artifactId>cq-social-storage</artifactId>
-            <version>1.0.20</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.cq.social</groupId>
-            <artifactId>cq-social-commons</artifactId>
-            <version>1.4.156</version>
+            <artifactId>cq-social-scf-api</artifactId>
+            <version>1.0.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.cq.social</groupId>
             <artifactId>cq-social-tally</artifactId>
-            <version>1.1.38</version>
+            <version>1.2.30</version>
             <scope>provided</scope>
         </dependency>       
         <dependency>
             <groupId>com.adobe.granite</groupId>
             <artifactId>com.adobe.granite.activitystreams</artifactId>
-            <version>0.0.8</version>
+            <version>0.0.42</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

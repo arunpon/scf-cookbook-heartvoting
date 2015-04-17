@@ -34,14 +34,14 @@
 
 .scf-voting .scf-vote-heart:before {
     content: "\f1e9";
-    font-family: AdobeIcons;
+    font-family: SCFIcons;
     font-size: 13px;
     color: #B4B4B4;
 }
 
 .scf-voting .scf-vote-down:before {
     content: "";
-    font-family: AdobeIcons;
+    font-family: SCFIcons;
     font-size: 13px;
     color: #B4B4B4;
 }

@@ -23,12 +23,11 @@ import org.apache.felix.scr.annotations.Service;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 
-import com.adobe.cq.social.commons.client.api.AbstractSocialComponentFactory;
-import com.adobe.cq.social.commons.client.api.ClientUtilities;
-import com.adobe.cq.social.commons.client.api.QueryRequestInfo;
-import com.adobe.cq.social.commons.client.api.SocialComponent;
-import com.adobe.cq.social.commons.client.api.SocialComponentFactory;
-import com.adobe.cq.social.tally.Voting;
+import com.adobe.cq.social.scf.ClientUtilities;
+import com.adobe.cq.social.scf.QueryRequestInfo;
+import com.adobe.cq.social.scf.SocialComponent;
+import com.adobe.cq.social.scf.SocialComponentFactory;
+import com.adobe.cq.social.scf.core.AbstractSocialComponentFactory;
 import com.adobe.granite.xss.XSSAPI;
 
 /**
@@ -36,22 +35,23 @@ import com.adobe.granite.xss.XSSAPI;
  */
 @Component
 @Service
-public class HeartVotingSocialComponentFactory extends AbstractSocialComponentFactory implements SocialComponentFactory {
+public class HeartVotingSocialComponentFactory extends AbstractSocialComponentFactory implements
+    SocialComponentFactory {
 
-    private static final String VOTING_RESOURCE_TYPE = "community-components/components/social/voting/components/hbs/voting";
+    private static final String VOTING_RESOURCE_TYPE =
+        "community-components/components/social/voting/components/hbs/voting";
 
     @Reference
     private XSSAPI xss;
 
     @Override
     public SocialComponent getSocialComponent(final Resource resource) {
-        return new HeartVotingSocialComponent(resource.adaptTo(Voting.class), this.getClientUtilities(resource
-            .getResourceResolver()));
+        return new HeartVotingSocialComponent(resource, this.getClientUtilities(resource.getResourceResolver()));
     }
 
     @Override
     public SocialComponent getSocialComponent(final Resource resource, final SlingHttpServletRequest request) {
-        return new HeartVotingSocialComponent(resource.adaptTo(Voting.class), this.getClientUtilities(request));
+        return new HeartVotingSocialComponent(resource, this.getClientUtilities(request));
     }
 
     @Override
