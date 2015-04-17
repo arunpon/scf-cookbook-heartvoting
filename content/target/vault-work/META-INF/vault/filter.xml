@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/community-components/components/social" />
+    <filter root="/content/community-components/en/heartvoting" />
+</workspaceFilter>
